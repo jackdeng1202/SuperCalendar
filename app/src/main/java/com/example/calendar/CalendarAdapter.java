@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.CheckedTextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -110,6 +110,13 @@ public class CalendarAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
+	public void cleanAllCheck(){
+		for (int i = 0; i < getCount(); i++) {
+
+		}
+//		notifyDataSetChanged();
+	}
+
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -134,7 +141,7 @@ public class CalendarAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(R.layout.calendar_item, null);
 		}
-		TextView textView = (TextView) convertView.findViewById(R.id.tvtext);
+		CheckedTextView textView = (CheckedTextView) convertView.findViewById(R.id.tvtext);
 		String d = dayNumber[position].split("\\.")[0];
 		String dv = dayNumber[position].split("\\.")[1];
 
@@ -155,9 +162,15 @@ public class CalendarAdapter extends BaseAdapter {
 
 			}
 		}else {
+			textView.setClickable(false);
 			textView.setTextColor(Color.GRAY);//上一个月数据和下个月数据
 			textView.setVisibility(isShowOthersMonthDays?View.VISIBLE:View.INVISIBLE);
 		}
+
+		/*if (currentFlag == position) {
+			// 设置当天的背景
+			textView.setChecked(true);
+		}*/
 
 		return convertView;
 	}

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Sep 08 16:59:14 CST 2017
+#Fri Sep 08 17:49:50 CST 2017
 25.file=C\:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\calendar_item_selected_bg.png
 25.base=C\:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\resources-debug.ap_
 22.set=ANDROID_RESOURCE

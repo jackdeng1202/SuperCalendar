@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.CheckedTextView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -93,9 +94,10 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			public void run() {
 				for (int i = 0; i < calV.getCount(); i++) {
 					ViewGroup child = (ViewGroup) gridView.getChildAt(i);
-					String date = ((TextView) child.getChildAt(0)).getText().toString();
+					CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
+					String date = textView.getText().toString();
 					if (date.equals("7")){
-						child.setActivated(true);
+						textView.setChecked(true);
 						return;
 					}
 				}
@@ -185,7 +187,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		gridView = new GridView(this);
 		gridView.setNumColumns(7);
 		gridView.setColumnWidth(40);
-		// gridView.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
+		gridView.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
 		if (Width == 720 && Height == 1280) {
 			gridView.setColumnWidth(40);
 		}
@@ -221,6 +223,14 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 					Toast.makeText(CalendarActivity.this, scheduleYear + "-" + scheduleMonth + "-" + scheduleDay, Toast.LENGTH_SHORT).show();
 					// Toast.makeText(CalendarActivity.this, "点击了该条目",
 					// Toast.LENGTH_SHORT).show();
+
+					for (int i = 0; i < calV.getCount(); i++) {
+						ViewGroup child = (ViewGroup) gridView.getChildAt(i);
+						CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
+						textView.setChecked(false);
+					}
+
+					((CheckedTextView)((LinearLayout)arg1).getChildAt(0)).setChecked(true);
 				}
 			}
 		});

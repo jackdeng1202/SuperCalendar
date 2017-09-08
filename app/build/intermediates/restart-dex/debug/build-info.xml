@@ -6,22 +6,22 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1504861634344"
+    timestamp="1504864873434"
     token="-6479935097931027648"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="123" />
+        duration="102" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="6" />
+        duration="9" />
     <task
         name="verifier"
-        duration="3" />
+        duration="5" />
 
     <artifact
         location="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
@@ -73,7 +73,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1504861576400"
+        timestamp="1504864849631"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\mfwn\Desktop\Calendar-master1\app\build\outputs\apk\app-debug.apk"
@@ -81,7 +81,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1504861634344"
+        timestamp="1504864873434"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
