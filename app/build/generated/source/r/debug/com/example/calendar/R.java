@@ -17,18 +17,34 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int holo_blue_bright=0x7f070000;
-        public static final int holo_blue_dark=0x7f070001;
-        public static final int holo_blue_light=0x7f070002;
-        public static final int holo_green_dark=0x7f070003;
-        public static final int holo_green_light=0x7f070004;
-        public static final int holo_orange_dark=0x7f070005;
-        public static final int holo_orange_light=0x7f070006;
-        public static final int holo_purple=0x7f070007;
-        public static final int holo_red_dark=0x7f070008;
-        public static final int holo_red_light=0x7f070009;
-        public static final int md__defaultBackground=0x7f07000a;
-        public static final int msg_emote_divider=0x7f07000b;
+        public static final int Et_border_darker_gray=0x7f070000;
+        public static final int alpha_100=0x7f070001;
+        public static final int bg_gray=0x7f070002;
+        public static final int bg_gray_F2=0x7f070003;
+        public static final int black=0x7f070004;
+        public static final int black_80=0x7f070005;
+        public static final int black_f8=0x7f070006;
+        public static final int black_half_trance=0x7f070007;
+        public static final int blue_text=0x7f070008;
+        public static final int color33=0x7f070009;
+        public static final int color66=0x7f07000a;
+        public static final int color88=0x7f07000b;
+        public static final int color99=0x7f07000c;
+        public static final int colorAccent=0x7f07000d;
+        public static final int colorEE=0x7f07000e;
+        public static final int colorPrimary=0x7f07000f;
+        public static final int colorPrimaryDark=0x7f070010;
+        public static final int color_wtm_main_green=0x7f070011;
+        public static final int color_wtm_main_green_pressed=0x7f070012;
+        public static final int color_wtm_shallow_green=0x7f070013;
+        public static final int colord6=0x7f070014;
+        public static final int colorhintWhite=0x7f070015;
+        public static final int dividerColor=0x7f070016;
+        public static final int main_style_color_gray=0x7f070017;
+        public static final int text_dark=0x7f070018;
+        public static final int text_dark_disable=0x7f070019;
+        public static final int white=0x7f07001a;
+        public static final int yellow_text=0x7f07001b;
     }
     public static final class dimen {
         public static final int activity_horizontal_margin=0x7f050000;
@@ -44,22 +60,26 @@ public final class R {
         public static final int mark=0x7f020006;
         public static final int next_month=0x7f020007;
         public static final int prev_month=0x7f020008;
-        public static final int title_bg=0x7f020009;
-        public static final int triangle05=0x7f02000a;
-        public static final int triangle05_pressed=0x7f02000b;
-        public static final int triangle05_states=0x7f02000c;
-        public static final int triangle06=0x7f02000d;
-        public static final int triangle06_pressed=0x7f02000e;
-        public static final int triangle06_states=0x7f02000f;
+        public static final int selector_dayview_bg=0x7f020009;
+        public static final int shape_calendar_day_bg_selected=0x7f02000a;
+        public static final int shape_calendar_day_bg_unselected=0x7f02000b;
+        public static final int title_bg=0x7f02000c;
+        public static final int triangle05=0x7f02000d;
+        public static final int triangle05_pressed=0x7f02000e;
+        public static final int triangle05_states=0x7f02000f;
+        public static final int triangle06=0x7f020010;
+        public static final int triangle06_pressed=0x7f020011;
+        public static final int triangle06_states=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0006;
+        public static final int action_settings=0x7f0a0007;
+        public static final int canshowother=0x7f0a0004;
         public static final int currentMonth=0x7f0a0001;
         public static final int flipper=0x7f0a0003;
-        public static final int gv_calendar=0x7f0a0004;
+        public static final int gv_calendar=0x7f0a0005;
         public static final int nextMonth=0x7f0a0002;
         public static final int prevMonth=0x7f0a0000;
-        public static final int tvtext=0x7f0a0005;
+        public static final int tvtext=0x7f0a0006;
     }
     public static final class layout {
         public static final int calendar=0x7f030000;

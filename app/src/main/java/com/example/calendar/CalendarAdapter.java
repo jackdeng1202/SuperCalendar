@@ -1,8 +1,5 @@
 package com.example.calendar;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -19,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 日历gridview中的每一个item显示的textview
  * 
@@ -26,6 +26,7 @@ import android.widget.TextView;
  * 
  */
 public class CalendarAdapter extends BaseAdapter {
+	private  boolean isShowOthersMonthDays;
 	private boolean isLeapyear = false; // 是否为闰年
 	private int daysOfMonth = 0; // 某月的天数
 	private int dayOfWeek = 0; // 具体某一天是星期几
@@ -56,6 +57,7 @@ public class CalendarAdapter extends BaseAdapter {
 	private String sys_year = "";
 	private String sys_month = "";
 	private String sys_day = "";
+	private int tempNextMonthDay = 1;
 
 	public CalendarAdapter() {
 		Date date = new Date();
@@ -66,8 +68,9 @@ public class CalendarAdapter extends BaseAdapter {
 
 	}
 
-	public CalendarAdapter(Context context, Resources rs, int jumpMonth, int jumpYear, int year_c, int month_c, int day_c) {
+	public CalendarAdapter(Context context, Resources rs, boolean isShowOthersMonthDays, int jumpMonth, int jumpYear, int year_c, int month_c, int day_c) {
 		this();
+		this.isShowOthersMonthDays = isShowOthersMonthDays;
 		this.context = context;
 		sc = new SpecialCalendar();
 		lc = new LunarCalendar();
@@ -102,22 +105,15 @@ public class CalendarAdapter extends BaseAdapter {
 
 	}
 
-	public CalendarAdapter(Context context, Resources rs, int year, int month, int day) {
-		this();
-		this.context = context;
-		sc = new SpecialCalendar();
-		lc = new LunarCalendar();
-		this.res = rs;
-		currentYear = String.valueOf(year);// 得到跳转到的年份
-		currentMonth = String.valueOf(month); // 得到跳转到的月份
-		currentDay = String.valueOf(day); // 得到跳转到的天
-		getCalendar(Integer.parseInt(currentYear), Integer.parseInt(currentMonth));
+	public void setShowOthersMonthDays(boolean isShowOthersMonthDays){
+		this.isShowOthersMonthDays =isShowOthersMonthDays;
+		notifyDataSetChanged();
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return dayNumber.length;
+		return isShowOthersMonthDays ? dayNumber.length :dayNumber.length - tempNextMonthDay;//去除下月的item,不显示
 	}
 
 	@Override
@@ -142,37 +138,27 @@ public class CalendarAdapter extends BaseAdapter {
 		String d = dayNumber[position].split("\\.")[0];
 		String dv = dayNumber[position].split("\\.")[1];
 
-		SpannableString sp = new SpannableString(d + "\n" + dv);
+//		SpannableString sp = new SpannableString(d + "\n" + dv);
+		SpannableString sp = new SpannableString(d);
 		sp.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		sp.setSpan(new RelativeSizeSpan(1.2f), 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		if (dv != null || dv != "") {
+		/*if (dv != null || dv != "") {
 			sp.setSpan(new RelativeSizeSpan(0.75f), d.length() + 1, dayNumber[position].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		}
-		// sp.setSpan(new ForegroundColorSpan(Color.MAGENTA), 14, 16,
-		// Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-		textView.setText(sp);
-		textView.setTextColor(Color.GRAY);
+		}*/
 
-		if (position < daysOfMonth + dayOfWeek && position >= dayOfWeek) {
+		textView.setText(sp);
+		if (position < (daysOfMonth + dayOfWeek) && position >= dayOfWeek) {
 			// 当前月信息显示
 			textView.setTextColor(Color.BLACK);// 当月字体设黑
-//			drawable = res.getDrawable(R.drawable.calendar_item_selected_bg);
 			drawable = new ColorDrawable(Color.rgb(23, 126, 214));
-			if (position % 7 == 0 || position % 7 == 6) {
-				// 当前月信息显示
-				textView.setTextColor(Color.rgb(23, 126, 214));// 当月字体设黑
-//				drawable = res.getDrawable(R.drawable.calendar_item_selected_bg);
-				drawable = new ColorDrawable(Color.rgb(23, 126, 214));
+			if (position % 7 == 0 || position % 7 == 6) {//周末特殊标记
+
 			}
+		}else {
+			textView.setTextColor(Color.GRAY);//上一个月数据和下个月数据
+			textView.setVisibility(isShowOthersMonthDays?View.VISIBLE:View.INVISIBLE);
 		}
 
-		if (currentFlag == position) {
-			// 设置当天的背景
-//			drawable = res.getDrawable(R.drawable.calendar_item_selected_bg);
-			drawable = new ColorDrawable(Color.rgb(23, 126, 214));
-			textView.setBackgroundDrawable(drawable);
-			textView.setTextColor(Color.WHITE);
-		}
 		return convertView;
 	}
 
@@ -222,6 +208,7 @@ public class CalendarAdapter extends BaseAdapter {
 				lunarDay = lc.getLunarDate(year, month + 1, j, false);
 				dayNumber[i] = j + "." + lunarDay;
 				j++;
+				tempNextMonthDay ++;
 			}
 		}
 

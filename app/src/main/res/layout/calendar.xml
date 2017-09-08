@@ -82,4 +82,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/canshowother"
+        android:layout_marginTop="10dp"
+        android:text="是否显示其他月"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

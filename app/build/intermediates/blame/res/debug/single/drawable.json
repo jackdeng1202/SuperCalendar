@@ -1,5 +1,17 @@
 [
     {
+        "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_calendar_day_bg_unselected.xml",
+        "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\drawable\\shape_calendar_day_bg_unselected.xml"
+    },
+    {
+        "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_dayview_bg.xml",
+        "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\drawable\\selector_dayview_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_calendar_day_bg_selected.xml",
+        "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\drawable\\shape_calendar_day_bg_selected.xml"
+    },
+    {
         "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\defselector.xml",
         "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\drawable\\defselector.xml"
     },

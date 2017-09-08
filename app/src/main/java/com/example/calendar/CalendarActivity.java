@@ -1,9 +1,8 @@
 package com.example.calendar;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -11,6 +10,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView.LayoutParams;
@@ -25,6 +25,8 @@ import android.widget.ViewFlipper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static android.widget.AbsListView.CHOICE_MODE_SINGLE;
 
 /**
  * 日历显示activity
@@ -52,6 +54,8 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 	private ImageView prevMonth;
 	/** 下个月 */
 	private ImageView nextMonth;
+	private boolean isShowPreNextMonthDays;
+	private TextView mCanshowother;
 
 	public CalendarActivity() {
 
@@ -71,16 +75,32 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		currentMonth = (TextView) findViewById(R.id.currentMonth);
 		prevMonth = (ImageView) findViewById(R.id.prevMonth);
 		nextMonth = (ImageView) findViewById(R.id.nextMonth);
+		mCanshowother = (TextView) findViewById(R.id.canshowother);
 		setListener();
 
+		isShowPreNextMonthDays = true;
 		gestureDetector = new GestureDetector(this, new MyGestureListener());
 		flipper = (ViewFlipper) findViewById(R.id.flipper);
 		flipper.removeAllViews();
-		calV = new CalendarAdapter(this, getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
+		calV = new CalendarAdapter(this, getResources(),isShowPreNextMonthDays,jumpMonth, jumpYear, year_c, month_c, day_c);
 		addGridView();
 		gridView.setAdapter(calV);
 		flipper.addView(gridView, 0);
 		addTextToTopTextView(currentMonth);
+
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				for (int i = 0; i < calV.getCount(); i++) {
+					ViewGroup child = (ViewGroup) gridView.getChildAt(i);
+					String date = ((TextView) child.getChildAt(0)).getText().toString();
+					if (date.equals("7")){
+						child.setActivated(true);
+						return;
+					}
+				}
+			}
+		},100);
 	}
 
 	private class MyGestureListener extends SimpleOnGestureListener {
@@ -109,7 +129,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		addGridView(); // 添加一个gridView
 		jumpMonth++; // 下一个月
 
-		calV = new CalendarAdapter(this, this.getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
+		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays, jumpMonth, jumpYear, year_c, month_c, day_c);
 		gridView.setAdapter(calV);
 		addTextToTopTextView(currentMonth); // 移动到下一月后，将当月显示在头标题中
 		gvFlag++;
@@ -129,7 +149,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		addGridView(); // 添加一个gridView
 		jumpMonth--; // 上一个月
 
-		calV = new CalendarAdapter(this, this.getResources(), jumpMonth, jumpYear, year_c, month_c, day_c);
+		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays, jumpMonth, jumpYear, year_c, month_c, day_c);
 		gridView.setAdapter(calV);
 		gvFlag++;
 		addTextToTopTextView(currentMonth); // 移动到上一月后，将当月显示在头标题中
@@ -170,7 +190,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			gridView.setColumnWidth(40);
 		}
 		gridView.setGravity(Gravity.CENTER_VERTICAL);
-		gridView.setSelector(new ColorDrawable(Color.TRANSPARENT));
+		gridView.setChoiceMode(CHOICE_MODE_SINGLE);
 		// 去除gridView边框
 		gridView.setVerticalSpacing(1);
 		gridView.setHorizontalSpacing(1);
@@ -210,6 +230,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 	private void setListener() {
 		prevMonth.setOnClickListener(this);
 		nextMonth.setOnClickListener(this);
+		mCanshowother.setOnClickListener(this);
 	}
 
 	@Override
@@ -221,6 +242,10 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			break;
 		case R.id.prevMonth: // 上一个月
 			enterPrevMonth(gvFlag);
+			break;
+		case R.id.canshowother: // 上一个月
+			isShowPreNextMonthDays = !isShowPreNextMonthDays;
+			calV.setShowOthersMonthDays(isShowPreNextMonthDays);
 			break;
 		default:
 			break;

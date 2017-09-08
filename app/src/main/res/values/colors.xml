@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <!--  -->
-    <color name="msg_emote_divider">#ffa1a1a1</color>
-    <!-- menudraw -->
-    <color name="md__defaultBackground">#FF555555</color>
-
-    <!-- A light Holo shade of blue -->
-    <color name="holo_blue_light">#ff33b5e5</color>
-    <!-- A light Holo shade of green -->
-    <color name="holo_green_light">#ff99cc00</color>
-    <!-- A light Holo shade of red -->
-    <color name="holo_red_light">#ffff4444</color>
-    <!-- A dark Holo shade of blue -->
-    <color name="holo_blue_dark">#ff0099cc</color>
-    <!-- A dark Holo shade of green -->
-    <color name="holo_green_dark">#ff669900</color>
-    <!-- A dark Holo shade of red -->
-    <color name="holo_red_dark">#ffcc0000</color>
-    <!-- A Holo shade of purple -->
-    <color name="holo_purple">#ffaa66cc</color>
-    <!-- A light Holo shade of orange -->
-    <color name="holo_orange_light">#ffffbb33</color>
-    <!-- A dark Holo shade of orange -->
-    <color name="holo_orange_dark">#ffff8800</color>
-    <!-- A really bright Holo shade of blue -->
-    <color name="holo_blue_bright">#ff00ddff</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="Et_border_darker_gray">@android:color/darker_gray</color>
+    <color name="color_wtm_main_green">#67CC02</color>
+    <color name="color_wtm_main_green_pressed">#4ccc02</color>
+    <color name="color_wtm_shallow_green">#9dd78c</color>
+    <color name="black_half_trance">#9333</color>
+    <color name="colorhintWhite">#f4f4f4</color>
+    <color name="main_style_color_gray">#b8b8b8</color>
+    <color name="text_dark">#333</color>
+    <color name="text_dark_disable">#6666</color>
+    <color name="bg_gray">#ececec</color>
+    <color name="color33">#333333</color>
+    <color name="color66">#666666</color>
+    <color name="color88">#888888</color>
+    <color name="color99">#999999</color>
+    <color name="colorEE">#eeeeee</color>
+    <color name="colord6">#d6d6d6</color>
+    <color name="black">#000000</color>
+    <color name="black_f8">#f8121212</color>
+    <color name="black_80">#80000000</color>
+    <color name="alpha_100">#0000</color>
+    <color name="white">#fff</color>
+    <color name="bg_gray_F2">#F2F2F2</color>
+    <color name="dividerColor">#d5d5d5</color>
+    <color name="yellow_text">#f47e1f</color>
+    <color name="blue_text">#007aff</color>
 </resources>
