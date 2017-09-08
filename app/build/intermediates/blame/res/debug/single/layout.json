@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\calendar.xml",
+        "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\layout\\calendar.xml"
+    },
+    {
+        "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\calendar_gridview.xml",
+        "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\layout\\calendar_gridview.xml"
+    },
+    {
+        "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\calendar_item.xml",
+        "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\layout\\calendar_item.xml"
+    }
+]

@@ -1,0 +1,65 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:2:1-24:12
+	package
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:3:5-35
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+	android:versionCode
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:8:5-22:19
+MERGED from [com.android.support:support-v4:25.0.0] C:\Users\mfwn\.android\build-cache\7136b37d14d197d20665987f5989a7acc093f3bb\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.0] C:\Users\mfwn\.android\build-cache\0df18b19b6ed58678fb09f35952e48a198cff46c\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.0] C:\Users\mfwn\.android\build-cache\63b18d812552239600191559702e8064f6e642b0\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.0] C:\Users\mfwn\.android\build-cache\be3fe155e7ffd888e129842fecf88aaec7e43e36\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.0] C:\Users\mfwn\.android\build-cache\f59dbbf0488f7899305f31cb85d125553b0d29d4\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.0.0] C:\Users\mfwn\.android\build-cache\210f7d98e8b5eb3c0fa81e3807562f30e9730384\output\AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:11:9-41
+	android:allowBackup
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:9:9-35
+	android:icon
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:10:9-45
+	android:theme
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:12:9-40
+activity#com.example.calendar.CalendarActivity
+ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:13:9-21:20
+	android:label
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:15:13-45
+	android:name
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:14:13-65
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml:19:27-74
+uses-sdk
+INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:support-v4:25.0.0] C:\Users\mfwn\.android\build-cache\7136b37d14d197d20665987f5989a7acc093f3bb\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.0] C:\Users\mfwn\.android\build-cache\0df18b19b6ed58678fb09f35952e48a198cff46c\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.0] C:\Users\mfwn\.android\build-cache\63b18d812552239600191559702e8064f6e642b0\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.0] C:\Users\mfwn\.android\build-cache\be3fe155e7ffd888e129842fecf88aaec7e43e36\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.0] C:\Users\mfwn\.android\build-cache\f59dbbf0488f7899305f31cb85d125553b0d29d4\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.0.0] C:\Users\mfwn\.android\build-cache\210f7d98e8b5eb3c0fa81e3807562f30e9730384\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:25.0.0] C:\Users\mfwn\.android\build-cache\7136b37d14d197d20665987f5989a7acc093f3bb\output\AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\mfwn\Desktop\Calendar-master1\app\src\main\AndroidManifest.xml

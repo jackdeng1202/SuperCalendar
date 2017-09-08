@@ -1,0 +1,393 @@
+[
+    {
+        "outputFile": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1076,
+                        "endColumn": 52,
+                        "endOffset": 1124
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 50,
+                    "endOffset": 154
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 523,
+                        "endColumn": 50,
+                        "endOffset": 569
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 159,
+                    "endColumn": 51,
+                    "endOffset": 206
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 248,
+                        "endColumn": 51,
+                        "endOffset": 295
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 211,
+                    "endColumn": 51,
+                    "endOffset": 258
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 614,
+                        "endColumn": 51,
+                        "endOffset": 661
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 263,
+                    "endColumn": 52,
+                    "endOffset": 311
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 341,
+                        "endColumn": 52,
+                        "endOffset": 389
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 316,
+                    "endColumn": 52,
+                    "endOffset": 364
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 975,
+                        "endColumn": 52,
+                        "endOffset": 1023
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 369,
+                    "endColumn": 53,
+                    "endOffset": 418
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 880,
+                        "endColumn": 53,
+                        "endOffset": 929
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 423,
+                    "endColumn": 47,
+                    "endOffset": 466
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 790,
+                        "endColumn": 47,
+                        "endOffset": 833
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 471,
+                    "endColumn": 49,
+                    "endOffset": 516
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 704,
+                        "endColumn": 49,
+                        "endOffset": 749
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 521,
+                    "endColumn": 50,
+                    "endOffset": 567
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 433,
+                        "endColumn": 50,
+                        "endOffset": 479
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 572,
+                    "endColumn": 57,
+                    "endOffset": 625
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 149,
+                        "endColumn": 57,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 630,
+                    "endColumn": 53,
+                    "endOffset": 679
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 73,
+                        "endColumn": 53,
+                        "endOffset": 122
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 684,
+                    "endColumn": 57,
+                    "endOffset": 737
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 89,
+                        "endColumn": 57,
+                        "endOffset": 142
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 742,
+                    "endColumn": 55,
+                    "endOffset": 793
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 147,
+                        "endColumn": 55,
+                        "endOffset": 198
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 798,
+                    "endColumn": 52,
+                    "endOffset": 846
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 101,
+                        "endColumn": 52,
+                        "endOffset": 149
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 851,
+                    "endColumn": 44,
+                    "endOffset": 891
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 44,
+                        "endOffset": 96
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 896,
+                    "endColumn": 52,
+                    "endOffset": 944
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 154,
+                        "endColumn": 52,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 949,
+                    "endLine": 26,
+                    "endColumn": 12,
+                    "endOffset": 1236
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 192,
+                        "endLine": 14,
+                        "endColumn": 12,
+                        "endOffset": 483
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1241,
+                    "endLine": 31,
+                    "endColumn": 12,
+                    "endOffset": 1452
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 524,
+                        "endLine": 21,
+                        "endColumn": 12,
+                        "endOffset": 739
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 1457,
+                    "endLine": 40,
+                    "endColumn": 12,
+                    "endOffset": 1881
+                },
+                "from": {
+                    "file": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 747,
+                        "endLine": 31,
+                        "endColumn": 12,
+                        "endOffset": 1179
+                    }
+                }
+            }
+        ]
+    }
+]
