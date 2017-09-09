@@ -2,6 +2,7 @@ package com.example.calendar;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -24,8 +25,10 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
+import static android.widget.AbsListView.CHOICE_MODE_MULTIPLE;
 import static android.widget.AbsListView.CHOICE_MODE_SINGLE;
 
 /**
@@ -58,6 +61,11 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 	private boolean isShowLunar;
 	private TextView mCanshowother;
 	private String[] specialDay;
+	private int CHOOSE_MODE = CHOICE_MODE_SINGLE;
+	private ArrayList<String> mutiChooseDatas= new ArrayList<>();
+	private TextView mChosemode;
+	private TextView mOkBt;
+	private TextView mCancelBt;
 
 	public CalendarActivity() {
 
@@ -78,6 +86,9 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		prevMonth = (ImageView) findViewById(R.id.prevMonth);
 		nextMonth = (ImageView) findViewById(R.id.nextMonth);
 		mCanshowother = (TextView) findViewById(R.id.canshowother);
+		mChosemode = (TextView) findViewById(R.id.chosemode);
+		mOkBt = (TextView) findViewById(R.id.tv_okbt);
+		mCancelBt = (TextView) findViewById(R.id.tv_cancelbt);
 		setListener();
 
 		isShowPreNextMonthDays = false;
@@ -196,7 +207,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			gridView.setColumnWidth(40);
 		}
 		gridView.setGravity(Gravity.CENTER_VERTICAL);
-		gridView.setChoiceMode(CHOICE_MODE_SINGLE);
+		gridView.setChoiceMode(CHOOSE_MODE);
 		// 去除gridView边框
 		gridView.setVerticalSpacing(5);
 		gridView.setHorizontalSpacing(5);
@@ -214,24 +225,20 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				// TODO Auto-generated method stub
-				// 点击任何一个item，得到这个item的日期(排除点击的是周日到周六(点击不响应))
+				// 点击任何一个item，得到这个item的日期(排除点击的是上月和下月(点击不响应))
 				int startPosition = calV.getStartPositon();
 				int endPosition = calV.getEndPosition();
 				if (startPosition <= position + 7 && position <= endPosition - 7) {
 					String scheduleDay = calV.getDateByClickItem(position).split("\\.")[0]; // 这一天的阳历
-					// String scheduleLunarDay =
-					// calV.getDateByClickItem(position).split("\\.")[1];
-					// //这一天的阴历
 					String scheduleYear = calV.getShowYear();
 					String scheduleMonth = calV.getShowMonth();
-					Toast.makeText(CalendarActivity.this, scheduleYear + "-" + scheduleMonth + "-" + scheduleDay, Toast.LENGTH_SHORT).show();
-					// Toast.makeText(CalendarActivity.this, "点击了该条目",
-					// Toast.LENGTH_SHORT).show();
 
-					for (int i = 0; i < calV.getCount(); i++) {
-						ViewGroup child = (ViewGroup) gridView.getChildAt(i);
-						CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
-						textView.setChecked(false);
+					if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
+						unCheckAllItem();
+
+						Toast.makeText(CalendarActivity.this, scheduleYear + "-" + scheduleMonth + "-" + scheduleDay, Toast.LENGTH_SHORT).show();
+					}else {
+						mutiChooseDatas.add(scheduleYear + "-" + scheduleMonth + "-" + scheduleDay);
 					}
 
 					((CheckedTextView)((LinearLayout)arg1).getChildAt(0)).setChecked(true);
@@ -245,6 +252,9 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		prevMonth.setOnClickListener(this);
 		nextMonth.setOnClickListener(this);
 		mCanshowother.setOnClickListener(this);
+		mChosemode.setOnClickListener(this);
+		mOkBt.setOnClickListener(this);
+		mCancelBt.setOnClickListener(this);
 	}
 
 	@Override
@@ -261,9 +271,46 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			isShowPreNextMonthDays = !isShowPreNextMonthDays;
 			calV.setShowOthersMonthDays(isShowPreNextMonthDays);
 			break;
+		case R.id.chosemode:
+			if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
+				CHOOSE_MODE = CHOICE_MODE_MULTIPLE;
+				mOkBt.setVisibility(View.VISIBLE);
+				mCancelBt.setVisibility(View.VISIBLE);
+				mutiChooseDatas.clear();
+				unCheckAllItem();
+			}else {
+				CHOOSE_MODE = CHOICE_MODE_SINGLE;
+				mOkBt.setVisibility(View.GONE);
+				mCancelBt.setVisibility(View.GONE);
+			}
+			gridView.setChoiceMode(CHOOSE_MODE);
+			break;
+		case R.id.tv_okbt:
+			String temp="";
+			for (String str : mutiChooseDatas) {
+				temp = temp + str + "\n";
+			}
+			if (!TextUtils.isEmpty(temp))
+				Toast.makeText(CalendarActivity.this, temp.subSequence(0,temp.lastIndexOf("\n")), Toast.LENGTH_SHORT).show();
+			else
+				Toast.makeText(CalendarActivity.this, "请选择日期", Toast.LENGTH_SHORT).show();
+
+			break;
+		case R.id.tv_cancelbt:
+			mutiChooseDatas.clear();
+			unCheckAllItem();
+			break;
 		default:
 			break;
 		}
+	}
+
+	private void unCheckAllItem() {
+		for (int i = 0; i < calV.getCount(); i++) {
+            ViewGroup child = (ViewGroup) gridView.getChildAt(i);
+            CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
+            textView.setChecked(false);
+        }
 	}
 
 }

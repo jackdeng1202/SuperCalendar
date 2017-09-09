@@ -4,37 +4,61 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content">
 
         <ImageView
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:id="@+id/prevMonth"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
             android:src="@drawable/prev_month" />
 
         <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_cancelbt"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/prevMonth"
+            android:padding="5dp"
+            android:text="取消"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
             android:id="@+id/currentMonth"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_weight="3"
+            android:layout_centerInParent="true"
             android:gravity="center"
             android:text="2014年6月"
             android:textColor="#177ed6"
             android:textSize="18dp" />
 
         <ImageView
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:id="@+id/nextMonth"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:src="@drawable/next_month" />
-    </LinearLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_okbt"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/nextMonth"
+            android:padding="5dp"
+            android:text="确认"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -90,4 +114,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        android:id="@+id/chosemode"
+        android:layout_marginTop="10dp"
+        android:text="选择方式"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
