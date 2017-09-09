@@ -2,8 +2,6 @@ package com.example.calendar;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -110,17 +108,10 @@ public class CalendarAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public void cleanAllCheck(){
-		for (int i = 0; i < getCount(); i++) {
-
-		}
-//		notifyDataSetChanged();
-	}
-
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return isShowOthersMonthDays ? dayNumber.length :dayNumber.length - tempNextMonthDay;//去除下月的item,不显示
+		return isShowOthersMonthDays ? dayNumber.length :(dayNumber.length - tempNextMonthDay+1);//去除下月的item,不显示
 	}
 
 	@Override
@@ -156,21 +147,21 @@ public class CalendarAdapter extends BaseAdapter {
 		textView.setText(sp);
 		if (position < (daysOfMonth + dayOfWeek) && position >= dayOfWeek) {
 			// 当前月信息显示
-			textView.setTextColor(Color.BLACK);// 当月字体设黑
-			drawable = new ColorDrawable(Color.rgb(23, 126, 214));
+			textView.setTextColor(context.getResources().getColorStateList(R.color.selector_daytextcolor_black));// 当月字体设黑
+//			drawable = new ColorDrawable(Color.rgb(23, 126, 214));
 			if (position % 7 == 0 || position % 7 == 6) {//周末特殊标记
 
 			}
 		}else {
 			textView.setClickable(false);
-			textView.setTextColor(Color.GRAY);//上一个月数据和下个月数据
+			textView.setTextColor(context.getResources().getColorStateList(R.color.selector_daytextcolor_dark));//上一个月数据和下个月数据
 			textView.setVisibility(isShowOthersMonthDays?View.VISIBLE:View.INVISIBLE);
 		}
 
-		/*if (currentFlag == position) {
+		if (currentFlag == position) {
 			// 设置当天的背景
 			textView.setChecked(true);
-		}*/
+		}
 
 		return convertView;
 	}

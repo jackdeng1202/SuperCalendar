@@ -2,7 +2,6 @@ package com.example.calendar;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -89,20 +88,20 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		flipper.addView(gridView, 0);
 		addTextToTopTextView(currentMonth);
 
-		new Handler().postDelayed(new Runnable() {
+/*		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
 				for (int i = 0; i < calV.getCount(); i++) {
 					ViewGroup child = (ViewGroup) gridView.getChildAt(i);
 					CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
 					String date = textView.getText().toString();
-					if (date.equals("7")){
+					if (date.equals("9")){
 						textView.setChecked(true);
 						return;
 					}
 				}
 			}
-		},100);
+		},100);*/
 	}
 
 	private class MyGestureListener extends SimpleOnGestureListener {
@@ -194,8 +193,8 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		gridView.setGravity(Gravity.CENTER_VERTICAL);
 		gridView.setChoiceMode(CHOICE_MODE_SINGLE);
 		// 去除gridView边框
-		gridView.setVerticalSpacing(1);
-		gridView.setHorizontalSpacing(1);
+		gridView.setVerticalSpacing(5);
+		gridView.setHorizontalSpacing(5);
 		gridView.setOnTouchListener(new OnTouchListener() {
 			// 将gridview中的触摸事件回传给gestureDetector
 
@@ -253,7 +252,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		case R.id.prevMonth: // 上一个月
 			enterPrevMonth(gvFlag);
 			break;
-		case R.id.canshowother: // 上一个月
+		case R.id.canshowother: // 是否显示其他月
 			isShowPreNextMonthDays = !isShowPreNextMonthDays;
 			calV.setShowOthersMonthDays(isShowPreNextMonthDays);
 			break;

@@ -20,6 +20,10 @@
         "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\drawable\\triangle05_states.xml"
     },
     {
+        "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_daytextcolor.xml",
+        "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\drawable\\selector_daytextcolor.xml"
+    },
+    {
         "merged": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\triangle06_states.xml",
         "source": "C:\\Users\\mfwn\\Desktop\\Calendar-master1\\app\\src\\main\\res\\drawable\\triangle06_states.xml"
     }
