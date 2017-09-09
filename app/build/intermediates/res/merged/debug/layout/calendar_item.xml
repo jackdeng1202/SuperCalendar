@@ -10,7 +10,7 @@
         android:textColor="@color/selector_daytextcolor_dark"
         android:id="@+id/tvtext"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:minWidth="45dp"
         android:minHeight="50dp"
         android:gravity="center"/>

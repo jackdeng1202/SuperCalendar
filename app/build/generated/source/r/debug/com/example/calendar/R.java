@@ -62,17 +62,16 @@ public final class R {
         public static final int mark=0x7f020006;
         public static final int next_month=0x7f020007;
         public static final int prev_month=0x7f020008;
-        public static final int selector_daytextcolor=0x7f020009;
-        public static final int selector_dayview_bg=0x7f02000a;
-        public static final int shape_calendar_day_bg_selected=0x7f02000b;
-        public static final int shape_calendar_day_bg_unselected=0x7f02000c;
-        public static final int title_bg=0x7f02000d;
-        public static final int triangle05=0x7f02000e;
-        public static final int triangle05_pressed=0x7f02000f;
-        public static final int triangle05_states=0x7f020010;
-        public static final int triangle06=0x7f020011;
-        public static final int triangle06_pressed=0x7f020012;
-        public static final int triangle06_states=0x7f020013;
+        public static final int selector_dayview_bg=0x7f020009;
+        public static final int shape_calendar_day_bg_selected=0x7f02000a;
+        public static final int shape_calendar_day_bg_unselected=0x7f02000b;
+        public static final int title_bg=0x7f02000c;
+        public static final int triangle05=0x7f02000d;
+        public static final int triangle05_pressed=0x7f02000e;
+        public static final int triangle05_states=0x7f02000f;
+        public static final int triangle06=0x7f020010;
+        public static final int triangle06_pressed=0x7f020011;
+        public static final int triangle06_states=0x7f020012;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0007;

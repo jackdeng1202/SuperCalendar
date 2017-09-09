@@ -48,6 +48,13 @@ public class LunarCalendar {
 			"0512 护士", "0601 儿童", "0701 建党", "0801 建军", "0808 父亲", "0909 毛泽东逝世纪念", "0910 教师", "0928 孔子诞辰",//
 			"1001 国庆", "1006 老人", "1024 联合国日", "1112 孙中山诞辰纪念", "1220 澳门回归纪念", "1225 圣诞", "1226 毛泽东诞辰纪念" };
 
+	// 自定义数据
+	String[] specialDay = new String[]{};//"20170909,110", "20170911,220"
+
+	public LunarCalendar(String[] specialDay) {
+		this.specialDay = specialDay;
+	}
+
 	// ====== 传回农历 y年的总天数
 	final private static int yearDays(int y) {
 		int i, sum = 348;
@@ -83,25 +90,6 @@ public class LunarCalendar {
 			return 30;
 	}
 
-	// ====== 传回农历 y年的生肖
-	final public String animalsYear(int year) {
-		final String[] Animals = new String[] { "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪" };
-		return Animals[(year - 4) % 12];
-	}
-
-	// ====== 传入 月日的offset 传回干支, 0=甲子
-	final private static String cyclicalm(int num) {
-		final String[] Gan = new String[] { "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸" };
-		final String[] Zhi = new String[] { "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥" };
-		return (Gan[num % 10] + Zhi[num % 12]);
-	}
-
-	// ====== 传入 offset 传回干支, 0=甲子
-	final public String cyclical(int year) {
-		int num = year - 1900 + 36;
-		return (cyclicalm(num));
-	}
-
 	public static String getChinaDayString(int day) {
 		String chineseTen[] = { "初", "十", "廿", "卅" };
 		int n = day % 10 == 0 ? 9 : day % 10 - 1;
@@ -115,16 +103,40 @@ public class LunarCalendar {
 
 	/** */
 	/**
-	 * 传出y年m月d日对应的农历. yearCyl3:农历年与1864的相差数 ? monCyl4:从1900年1月31日以来,闰月数
+	 * yearCyl3:农历年与1864的相差数 ? monCyl4:从1900年1月31日以来,闰月数
 	 * dayCyl5:与1900年1月31日相差的天数,再加40 ?
 	 * 
 	 * isday: 这个参数为false---日期为节假日时，阴历日期就返回节假日 ，true---不管日期是否为节假日依然返回这天对应的阴历日期
 	 * 
-	 * @param cal
-	 * @return
+	 * @return 根据阳历日期传出y年m月d日对应的农历日期.
 	 */
-	public String getLunarDate(int year_log, int month_log, int day_log, boolean isday) {
+	public String getLunarDate(int year_log, int month_log, int day_log, boolean isday, boolean isShowLunar) {
 		// @SuppressWarnings("unused")
+
+		//自定义日期
+		for (int i = 0; i < specialDay.length; i++) {
+			String sd = specialDay[i].split(",")[0]; // 自定义的日期
+			String sdv = specialDay[i].split(",")[1]; // 自定义的描述
+			String syear_v = year_log + "";
+			String smonth_v = month_log + "";
+			String sday_v = day_log + "";
+			String smd = "";
+			if (month_log < 10) {
+				smonth_v = "0" + month_log;
+			}
+			if (day_log < 10) {
+				sday_v = "0" + day_log;
+			}
+			smd = syear_v + smonth_v + sday_v;
+			if (sd.trim().equals(smd.trim())) {
+				return "余"+sdv;
+			}
+		}
+
+		if (!isShowLunar)
+			return " ";
+
+
 		int yearCyl, monCyl, dayCyl;
 		// int leapMonth = 0;
 		String nowadays;

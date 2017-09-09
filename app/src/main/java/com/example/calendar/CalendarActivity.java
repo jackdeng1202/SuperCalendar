@@ -55,7 +55,9 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 	/** 下个月 */
 	private ImageView nextMonth;
 	private boolean isShowPreNextMonthDays;
+	private boolean isShowLunar;
 	private TextView mCanshowother;
+	private String[] specialDay;
 
 	public CalendarActivity() {
 
@@ -78,11 +80,14 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		mCanshowother = (TextView) findViewById(R.id.canshowother);
 		setListener();
 
-		isShowPreNextMonthDays = true;
+		isShowPreNextMonthDays = false;
+		isShowLunar = false;
+
+		specialDay = new String[]{"20170909,110", "20170911,220"};
 		gestureDetector = new GestureDetector(this, new MyGestureListener());
 		flipper = (ViewFlipper) findViewById(R.id.flipper);
 		flipper.removeAllViews();
-		calV = new CalendarAdapter(this, getResources(),isShowPreNextMonthDays,jumpMonth, jumpYear, year_c, month_c, day_c);
+		calV = new CalendarAdapter(this, getResources(),isShowPreNextMonthDays,isShowLunar,specialDay,jumpMonth, jumpYear, year_c, month_c, day_c);
 		addGridView();
 		gridView.setAdapter(calV);
 		flipper.addView(gridView, 0);
@@ -130,7 +135,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		addGridView(); // 添加一个gridView
 		jumpMonth++; // 下一个月
 
-		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays, jumpMonth, jumpYear, year_c, month_c, day_c);
+		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar, specialDay,jumpMonth, jumpYear, year_c, month_c, day_c);
 		gridView.setAdapter(calV);
 		addTextToTopTextView(currentMonth); // 移动到下一月后，将当月显示在头标题中
 		gvFlag++;
@@ -150,7 +155,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		addGridView(); // 添加一个gridView
 		jumpMonth--; // 上一个月
 
-		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays, jumpMonth, jumpYear, year_c, month_c, day_c);
+		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar,specialDay, jumpMonth, jumpYear, year_c, month_c, day_c);
 		gridView.setAdapter(calV);
 		gvFlag++;
 		addTextToTopTextView(currentMonth); // 移动到上一月后，将当月显示在头标题中

@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
@@ -25,6 +26,7 @@ import java.util.Date;
  */
 public class CalendarAdapter extends BaseAdapter {
 	private  boolean isShowOthersMonthDays;
+	private  boolean isShowLunar;
 	private boolean isLeapyear = false; // 是否为闰年
 	private int daysOfMonth = 0; // 某月的天数
 	private int dayOfWeek = 0; // 具体某一天是星期几
@@ -66,12 +68,14 @@ public class CalendarAdapter extends BaseAdapter {
 
 	}
 
-	public CalendarAdapter(Context context, Resources rs, boolean isShowOthersMonthDays, int jumpMonth, int jumpYear, int year_c, int month_c, int day_c) {
+	public CalendarAdapter(Context context, Resources rs, boolean isShowOthersMonthDays,boolean isShowLunar,String[] specialDay,
+						   int jumpMonth, int jumpYear, int year_c, int month_c, int day_c) {
 		this();
 		this.isShowOthersMonthDays = isShowOthersMonthDays;
+		this.isShowLunar = isShowLunar;
 		this.context = context;
 		sc = new SpecialCalendar();
-		lc = new LunarCalendar();
+		lc = new LunarCalendar(specialDay);
 		this.res = rs;
 
 		int stepYear = year_c + jumpYear;
@@ -136,13 +140,12 @@ public class CalendarAdapter extends BaseAdapter {
 		String d = dayNumber[position].split("\\.")[0];
 		String dv = dayNumber[position].split("\\.")[1];
 
-//		SpannableString sp = new SpannableString(d + "\n" + dv);
-		SpannableString sp = new SpannableString(d);
+		SpannableString sp = new SpannableString(d + "\n" + dv);
 		sp.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		sp.setSpan(new RelativeSizeSpan(1.2f), 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		/*if (dv != null || dv != "") {
-			sp.setSpan(new RelativeSizeSpan(0.75f), d.length() + 1, dayNumber[position].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		}*/
+		if (!TextUtils.isEmpty(dv)) {
+			sp.setSpan(new RelativeSizeSpan(0.6f), d.length() + 1, dayNumber[position].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		}
 
 		textView.setText(sp);
 		if (position < (daysOfMonth + dayOfWeek) && position >= dayOfWeek) {
@@ -191,12 +194,12 @@ public class CalendarAdapter extends BaseAdapter {
 			// }
 			if (i < dayOfWeek) { // 前一个月
 				int temp = lastDaysOfMonth - dayOfWeek + 1;
-				lunarDay = lc.getLunarDate(year, month - 1, temp + i, false);
+				lunarDay = lc.getLunarDate(year, month - 1, temp + i, false,isShowLunar);
 				dayNumber[i] = (temp + i) + "." + lunarDay;
 
 			} else if (i < daysOfMonth + dayOfWeek) { // 本月
 				String day = String.valueOf(i - dayOfWeek + 1); // 得到的日期
-				lunarDay = lc.getLunarDate(year, month, i - dayOfWeek + 1, false);
+				lunarDay = lc.getLunarDate(year, month, i - dayOfWeek + 1, false,isShowLunar);
 				dayNumber[i] = i - dayOfWeek + 1 + "." + lunarDay;
 				// 对于当前月才去标记当前日期
 				if (sys_year.equals(String.valueOf(year)) && sys_month.equals(String.valueOf(month)) && sys_day.equals(day)) {
@@ -205,11 +208,11 @@ public class CalendarAdapter extends BaseAdapter {
 				}
 				setShowYear(String.valueOf(year));
 				setShowMonth(String.valueOf(month));
-				setAnimalsYear(lc.animalsYear(year));
+//				setAnimalsYear(lc.animalsYear(year));
 				setLeapMonth(lc.leapMonth == 0 ? "" : String.valueOf(lc.leapMonth));
-				setCyclical(lc.cyclical(year));
+//				setCyclical(lc.cyclical(year));
 			} else { // 下一个月
-				lunarDay = lc.getLunarDate(year, month + 1, j, false);
+				lunarDay = lc.getLunarDate(year, month + 1, j, false,isShowLunar);
 				dayNumber[i] = j + "." + lunarDay;
 				j++;
 				tempNextMonthDay ++;
