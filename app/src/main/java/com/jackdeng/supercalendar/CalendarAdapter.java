@@ -1,4 +1,4 @@
-package com.example.calendar;
+package com.jackdeng.supercalendar;
 
 import android.content.Context;
 import android.content.res.Resources;

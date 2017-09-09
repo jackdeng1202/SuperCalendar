@@ -1,4 +1,4 @@
-package com.example.calendar;
+package com.jackdeng.supercalendar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

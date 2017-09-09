@@ -1,4 +1,4 @@
-package com.example.calendar;
+package com.jackdeng.supercalendar;
 
 import java.util.Calendar;
 
