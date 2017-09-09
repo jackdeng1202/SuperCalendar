@@ -21,8 +21,9 @@ import java.util.Date;
 /**
  * 日历gridview中的每一个item显示的textview
  * 
- * @author Vincent Lee
- * 
+ * @author jack
+ * @Email 1032938431@qq.com
+ *
  */
 public class CalendarAdapter extends BaseAdapter {
 	private  boolean isShowOthersMonthDays;

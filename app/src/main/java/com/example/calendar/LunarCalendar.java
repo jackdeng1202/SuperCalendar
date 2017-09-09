@@ -6,8 +6,9 @@ import java.util.Date;
 
 /**
  * 农历算法
- * 
- * @author Vincent Lee
+ *
+ * @author jack
+ * @Email 1032938431@qq.com
  * 
  */
 public class LunarCalendar {

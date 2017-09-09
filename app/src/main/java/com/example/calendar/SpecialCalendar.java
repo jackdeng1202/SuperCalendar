@@ -4,8 +4,9 @@ import java.util.Calendar;
 
 /**
  * 闰年月算法
- * 
- * @author Vincent Lee
+ *
+ * @author jack
+ * @Email 1032938431@qq.com
  * 
  */
 public class SpecialCalendar {

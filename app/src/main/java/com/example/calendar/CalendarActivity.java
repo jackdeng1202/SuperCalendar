@@ -33,8 +33,9 @@ import static android.widget.AbsListView.CHOICE_MODE_SINGLE;
 
 /**
  * 日历显示activity
- * 
- * @author Vincent Lee
+ *
+ * @author jack
+ * @Email 1032938431@qq.com
  * 
  */
 public class CalendarActivity extends Activity implements View.OnClickListener {
