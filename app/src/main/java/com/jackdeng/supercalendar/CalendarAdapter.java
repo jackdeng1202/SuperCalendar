@@ -59,6 +59,7 @@ public class CalendarAdapter extends BaseAdapter {
 	private String sys_month = "";
 	private String sys_day = "";
 	private int tempNextMonthDay = 1;
+	private boolean isShowToDay = true;
 
 	public CalendarAdapter() {
 		Date date = new Date();
@@ -111,6 +112,10 @@ public class CalendarAdapter extends BaseAdapter {
 	public void setShowOthersMonthDays(boolean isShowOthersMonthDays){
 		this.isShowOthersMonthDays =isShowOthersMonthDays;
 		notifyDataSetChanged();
+	}
+
+	public void setShowToDay(boolean isShowToDay){
+		this.isShowToDay =isShowToDay;
 	}
 
 	public void setSpecialDay(String[] specialDay){
@@ -169,7 +174,7 @@ public class CalendarAdapter extends BaseAdapter {
 			textView.setVisibility(isShowOthersMonthDays?View.VISIBLE:View.INVISIBLE);
 		}
 
-		if (currentFlag == position) {
+		if (isShowToDay && currentFlag == position) {
 			// 设置当天的背景
 			textView.setChecked(true);
 		}
