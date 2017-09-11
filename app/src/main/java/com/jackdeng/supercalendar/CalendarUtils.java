@@ -9,13 +9,13 @@ import java.util.Calendar;
  * @Email 1032938431@qq.com
  * 
  */
-public class SpecialCalendar {
+public class CalendarUtils {
 
-	private int daysOfMonth = 0; // 某月的天数
-	private int dayOfWeek = 0; // 具体某一天是星期几
+	private CalendarUtils() {
+	}
 
 	// 判断是否为闰年
-	public boolean isLeapYear(int year) {
+	public static boolean isLeapYear(int year) {
 		if (year % 100 == 0 && year % 400 == 0) {
 			return true;
 		} else if (year % 100 != 0 && year % 4 == 0) {
@@ -25,7 +25,8 @@ public class SpecialCalendar {
 	}
 
 	// 得到某月有多少天数
-	public int getDaysOfMonth(boolean isLeapyear, int month) {
+	public static int getDaysOfMonth(boolean isLeapyear, int month) {
+		int daysOfMonth = 0;// 某月的总天数
 		switch (month) {
 		case 1:
 		case 3:
@@ -53,11 +54,11 @@ public class SpecialCalendar {
 		return daysOfMonth;
 	}
 
-	// 指定某年中的某月的第一天是星期几
-	public int getWeekdayOfMonth(int year, int month) {
+	// 获得某年中的某月的第一天是星期几
+	public static int getWeekdayOfMonth(int year, int month) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month - 1, 1);
-		dayOfWeek = cal.get(Calendar.DAY_OF_WEEK) - 1;
+		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK) - 1;
 		return dayOfWeek;
 	}
 

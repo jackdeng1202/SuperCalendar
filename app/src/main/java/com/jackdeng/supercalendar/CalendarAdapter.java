@@ -35,7 +35,6 @@ public class CalendarAdapter extends BaseAdapter {
 	private Context context;
 	private String[] dayNumber = new String[42]; // 一个gridview中的日期存入此数组中
 	// private static String week[] = {"周日","周一","周二","周三","周四","周五","周六"};
-	private SpecialCalendar sc = null;
 	private LunarCalendar lc = null;
 	private Resources res = null;
 	private Drawable drawable = null;
@@ -75,7 +74,6 @@ public class CalendarAdapter extends BaseAdapter {
 		this.isShowOthersMonthDays = isShowOthersMonthDays;
 		this.isShowLunar = isShowLunar;
 		this.context = context;
-		sc = new SpecialCalendar();
 		lc = new LunarCalendar(specialDay);
 		this.res = rs;
 
@@ -172,10 +170,10 @@ public class CalendarAdapter extends BaseAdapter {
 
 	// 得到某年的某月的天数且这月的第一天是星期几
 	public void getCalendar(int year, int month) {
-		isLeapyear = sc.isLeapYear(year); // 是否为闰年
-		daysOfMonth = sc.getDaysOfMonth(isLeapyear, month); // 某月的总天数
-		dayOfWeek = sc.getWeekdayOfMonth(year, month); // 某月第一天为星期几
-		lastDaysOfMonth = sc.getDaysOfMonth(isLeapyear, month - 1); // 上一个月的总天数
+		isLeapyear = CalendarUtils.isLeapYear(year); // 是否为闰年
+		daysOfMonth = CalendarUtils.getDaysOfMonth(isLeapyear, month); // 某月的总天数
+		dayOfWeek = CalendarUtils.getWeekdayOfMonth(year, month); // 某月第一天为星期几
+		lastDaysOfMonth = CalendarUtils.getDaysOfMonth(isLeapyear, month - 1); // 上一个月的总天数
 		Log.d("DAY", isLeapyear + " ======  " + daysOfMonth + "  ============  " + dayOfWeek + "  =========   " + lastDaysOfMonth);
 		getweek(year, month);
 	}
