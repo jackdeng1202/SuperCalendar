@@ -26,6 +26,7 @@ import java.util.Date;
  *
  */
 public class CalendarAdapter extends BaseAdapter {
+	private String[] mSpecialDay;
 	private  boolean isShowOthersMonthDays;
 	private  boolean isShowLunar;
 	private boolean isLeapyear = false; // 是否为闰年
@@ -73,8 +74,9 @@ public class CalendarAdapter extends BaseAdapter {
 		this();
 		this.isShowOthersMonthDays = isShowOthersMonthDays;
 		this.isShowLunar = isShowLunar;
+		this.mSpecialDay = specialDay;
 		this.context = context;
-		lc = new LunarCalendar(specialDay);
+		lc = new LunarCalendar(mSpecialDay);
 		this.res = rs;
 
 		int stepYear = year_c + jumpYear;
@@ -108,6 +110,13 @@ public class CalendarAdapter extends BaseAdapter {
 
 	public void setShowOthersMonthDays(boolean isShowOthersMonthDays){
 		this.isShowOthersMonthDays =isShowOthersMonthDays;
+		notifyDataSetChanged();
+	}
+
+	public void setSpecialDay(String[] specialDay){
+		this.mSpecialDay =specialDay;
+		lc = new LunarCalendar(mSpecialDay);
+		getCalendar(Integer.parseInt(currentYear), Integer.parseInt(currentMonth));
 		notifyDataSetChanged();
 	}
 
@@ -181,7 +190,7 @@ public class CalendarAdapter extends BaseAdapter {
 	// 将一个月中的每一天的值添加入数组dayNuber中
 	private void getweek(int year, int month) {
 		int j = 1;
-		int flag = 0;
+		tempNextMonthDay = 1;
 		String lunarDay = "";
 
 		// 得到当前月的所有日程日期(这些日期需要标记)

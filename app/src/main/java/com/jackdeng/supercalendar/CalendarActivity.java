@@ -41,7 +41,7 @@ import static android.widget.AbsListView.CHOICE_MODE_SINGLE;
 public class CalendarActivity extends Activity implements View.OnClickListener {
 
 	private GestureDetector gestureDetector = null;
-	private CalendarAdapter calV = null;
+	private CalendarAdapter mAdapter = null;
 	private ViewFlipper flipper = null;
 	private GridView gridView = null;
 	private static int jumpMonth = 0; // 每次滑动，增加或减去一个月,默认为0（即显示当前月）
@@ -67,6 +67,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 	private TextView mChosemode;
 	private TextView mOkBt;
 	private TextView mCancelBt;
+    private TextView mSetSpecilDayBt;
 
 	public CalendarActivity() {
 
@@ -90,6 +91,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		mChosemode = (TextView) findViewById(R.id.chosemode);
 		mOkBt = (TextView) findViewById(R.id.tv_okbt);
 		mCancelBt = (TextView) findViewById(R.id.tv_cancelbt);
+		mSetSpecilDayBt = (TextView) findViewById(R.id.setSpecilDay);
 		setListener();
 
 		isShowPreNextMonthDays = false;
@@ -99,16 +101,16 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		gestureDetector = new GestureDetector(this, new MyGestureListener());
 		flipper = (ViewFlipper) findViewById(R.id.flipper);
 		flipper.removeAllViews();
-		calV = new CalendarAdapter(this, getResources(),isShowPreNextMonthDays,isShowLunar,specialDay,jumpMonth, jumpYear, year_c, month_c, day_c);
+		mAdapter = new CalendarAdapter(this, getResources(),isShowPreNextMonthDays,isShowLunar,specialDay,jumpMonth, jumpYear, year_c, month_c, day_c);
 		addGridView();
-		gridView.setAdapter(calV);
+		gridView.setAdapter(mAdapter);
 		flipper.addView(gridView, 0);
 		addTextToTopTextView(currentMonth);
 
 /*		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				for (int i = 0; i < calV.getCount(); i++) {
+				for (int i = 0; i < mAdapter.getCount(); i++) {
 					ViewGroup child = (ViewGroup) gridView.getChildAt(i);
 					CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
 					String date = textView.getText().toString();
@@ -147,8 +149,8 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		addGridView(); // 添加一个gridView
 		jumpMonth++; // 下一个月
 
-		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar, specialDay,jumpMonth, jumpYear, year_c, month_c, day_c);
-		gridView.setAdapter(calV);
+		mAdapter = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar, specialDay,jumpMonth, jumpYear, year_c, month_c, day_c);
+		gridView.setAdapter(mAdapter);
 		addTextToTopTextView(currentMonth); // 移动到下一月后，将当月显示在头标题中
 		gvFlag++;
 		flipper.addView(gridView, gvFlag);
@@ -167,8 +169,8 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		addGridView(); // 添加一个gridView
 		jumpMonth--; // 上一个月
 
-		calV = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar,specialDay, jumpMonth, jumpYear, year_c, month_c, day_c);
-		gridView.setAdapter(calV);
+		mAdapter = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar,specialDay, jumpMonth, jumpYear, year_c, month_c, day_c);
+		gridView.setAdapter(mAdapter);
 		gvFlag++;
 		addTextToTopTextView(currentMonth); // 移动到上一月后，将当月显示在头标题中
 		flipper.addView(gridView, gvFlag);
@@ -188,7 +190,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		StringBuffer textDate = new StringBuffer();
 		// draw = getResources().getDrawable(R.drawable.top_day);
 		// view.setBackgroundDrawable(draw);
-		textDate.append(calV.getShowYear()).append("年").append(calV.getShowMonth()).append("月").append("\t");
+		textDate.append(mAdapter.getShowYear()).append("年").append(mAdapter.getShowMonth()).append("月").append("\t");
 		view.setText(textDate);
 	}
 
@@ -227,12 +229,12 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				// TODO Auto-generated method stub
 				// 点击任何一个item，得到这个item的日期(排除点击的是上月和下月(点击不响应))
-				int startPosition = calV.getStartPositon();
-				int endPosition = calV.getEndPosition();
+				int startPosition = mAdapter.getStartPositon();
+				int endPosition = mAdapter.getEndPosition();
 				if (startPosition <= position + 7 && position <= endPosition - 7) {
-					String scheduleDay = calV.getDateByClickItem(position).split("\\.")[0]; // 这一天的阳历
-					String scheduleYear = calV.getShowYear();
-					String scheduleMonth = calV.getShowMonth();
+					String scheduleDay = mAdapter.getDateByClickItem(position).split("\\.")[0]; // 这一天的阳历
+					String scheduleYear = mAdapter.getShowYear();
+					String scheduleMonth = mAdapter.getShowMonth();
 
 					if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
 						unCheckAllItem();
@@ -256,6 +258,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		mChosemode.setOnClickListener(this);
 		mOkBt.setOnClickListener(this);
 		mCancelBt.setOnClickListener(this);
+        mSetSpecilDayBt.setOnClickListener(this);
 	}
 
 	@Override
@@ -270,19 +273,21 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			break;
 		case R.id.canshowother: // 是否显示其他月
 			isShowPreNextMonthDays = !isShowPreNextMonthDays;
-			calV.setShowOthersMonthDays(isShowPreNextMonthDays);
+			mAdapter.setShowOthersMonthDays(isShowPreNextMonthDays);
 			break;
 		case R.id.chosemode:
 			if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
-				CHOOSE_MODE = CHOICE_MODE_MULTIPLE;
+				CHOOSE_MODE = CHOICE_MODE_MULTIPLE;//当前是单选就变多选
 				mOkBt.setVisibility(View.VISIBLE);
 				mCancelBt.setVisibility(View.VISIBLE);
 				mutiChooseDatas.clear();
 				unCheckAllItem();
 			}else {
-				CHOOSE_MODE = CHOICE_MODE_SINGLE;
+				CHOOSE_MODE = CHOICE_MODE_SINGLE;//当前是多选就变单选
 				mOkBt.setVisibility(View.GONE);
 				mCancelBt.setVisibility(View.GONE);
+				unCheckAllItem();//变单选时默认选中当前日期
+				mAdapter.notifyDataSetChanged();//变单选时默认选中当前日期
 			}
 			gridView.setChoiceMode(CHOOSE_MODE);
 			break;
@@ -301,13 +306,18 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 			mutiChooseDatas.clear();
 			unCheckAllItem();
 			break;
+		case R.id.setSpecilDay:
+			unCheckAllItem();
+            specialDay = new String[]{"20170912,111", "20170915,222"};
+            mAdapter.setSpecialDay(specialDay);
+			break;
 		default:
 			break;
 		}
 	}
 
 	private void unCheckAllItem() {
-		for (int i = 0; i < calV.getCount(); i++) {
+		for (int i = 0; i < mAdapter.getCount(); i++) {
             ViewGroup child = (ViewGroup) gridView.getChildAt(i);
             CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
             textView.setChecked(false);
