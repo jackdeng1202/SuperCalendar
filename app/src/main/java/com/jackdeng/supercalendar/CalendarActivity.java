@@ -280,13 +280,13 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 				CHOOSE_MODE = CHOICE_MODE_MULTIPLE;//当前是单选就变多选
 				mOkBt.setVisibility(View.VISIBLE);
 				mCancelBt.setVisibility(View.VISIBLE);
-				mutiChooseDatas.clear();
 				unCheckAllItem();
 			}else {
 				CHOOSE_MODE = CHOICE_MODE_SINGLE;//当前是多选就变单选
 				mOkBt.setVisibility(View.GONE);
 				mCancelBt.setVisibility(View.GONE);
 				unCheckAllItem();//变单选时默认选中当前日期
+				mAdapter.setShowToDay(true);
 				mAdapter.notifyDataSetChanged();//变单选时默认选中当前日期
 			}
 			gridView.setChoiceMode(CHOOSE_MODE);
@@ -303,12 +303,12 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 
 			break;
 		case R.id.tv_cancelbt:
-			mutiChooseDatas.clear();
 			unCheckAllItem();
 			break;
 		case R.id.setSpecilDay:
 			unCheckAllItem();
             specialDay = new String[]{"20170912,111", "20170915,222"};
+            mAdapter.setShowToDay(CHOOSE_MODE == CHOICE_MODE_SINGLE);
             mAdapter.setSpecialDay(specialDay);
 			break;
 		default:
@@ -317,6 +317,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 	}
 
 	private void unCheckAllItem() {
+		mutiChooseDatas.clear();
 		for (int i = 0; i < mAdapter.getCount(); i++) {
             ViewGroup child = (ViewGroup) gridView.getChildAt(i);
             CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
