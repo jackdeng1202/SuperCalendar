@@ -1,6 +1,8 @@
 package com.jackdeng.supercalendar;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Display;
@@ -211,7 +213,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		}
 		gridView.setGravity(Gravity.CENTER_VERTICAL);
 		gridView.setChoiceMode(CHOOSE_MODE);
-		// 去除gridView边框
+		gridView.setSelector(new ColorDrawable(Color.TRANSPARENT)); // 去除gridView边框
 		gridView.setVerticalSpacing(5);
 		gridView.setHorizontalSpacing(5);
 		gridView.setOnTouchListener(new OnTouchListener() {

@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3171c937510994adba4d0bf736c5938973ed9428">
-        <dex dex="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_4ba77647e741c7899d36d7a591201a2570b2427a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
         <dex dex="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_27dfcb16d3c7437cb69df32e95f6e5305f6cabf0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3171c937510994adba4d0bf736c5938973ed9428">
+        <dex dex="C:\Users\mfwn\Desktop\Calendar-master1\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_4ba77647e741c7899d36d7a591201a2570b2427a\classes.dex" />
     </item>
 
 </items>
