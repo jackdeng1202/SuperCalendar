@@ -1,6 +1,6 @@
 ### 一个功能强大的购票时间选择的日历神器
 
- ![supercalendar](https://github.com/jackdengchuangliang/SuperCalendar/super.gif)
+ ![supercalendar](https://github.com/jackdengchuangliang/SuperCalendar/blob/dev/super.gif)
 
 ##### 1.设置前月是否显示其他月的日期
     mAdapter.setShowOthersMonthDays(true);
@@ -11,7 +11,7 @@
 ##### 3.设置特殊日期的说明
 	specialDay = new String[]{"20170912,111", "20170915,222"};
     mAdapter.setSpecialDay(specialDay);
-    
+
 待续......
 
 
