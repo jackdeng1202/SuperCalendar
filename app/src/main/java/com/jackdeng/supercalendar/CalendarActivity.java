@@ -250,9 +250,18 @@ public class CalendarActivity extends Activity implements View.OnClickListener,A
 					String lastSingleDate = scheduleYear + "-" + scheduleMonth + "-" + scheduleDay;
 					if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
 						unCheckAllItem();
+						mutiChooseDatas.add(lastSingleDate);
+						((CheckedTextView)((LinearLayout)arg1).getChildAt(0)).setChecked(true);
+					} else {
+						if (mutiChooseDatas.contains(lastSingleDate)){
+							((CheckedTextView)((LinearLayout)arg1).getChildAt(0)).setChecked(false);
+							mutiChooseDatas.remove(lastSingleDate);
+						}else {
+							mutiChooseDatas.add(lastSingleDate);
+							((CheckedTextView)((LinearLayout)arg1).getChildAt(0)).setChecked(true);
+						}
+
 					}
-					mutiChooseDatas.add(lastSingleDate);
-					((CheckedTextView)((LinearLayout)arg1).getChildAt(0)).setChecked(true);
 				}
 			}
 		});
