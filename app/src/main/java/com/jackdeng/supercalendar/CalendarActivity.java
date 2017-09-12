@@ -281,9 +281,11 @@ public class CalendarActivity extends Activity implements View.OnClickListener,A
 			break;
 		case R.id.canshowother: // 是否显示其他月
 			isShowPreNextMonthDays = !isShowPreNextMonthDays;
+			mAdapter.setShowToDay(false);
 			mAdapter.setShowOthersMonthDays(isShowPreNextMonthDays);
 			break;
 		case R.id.chosemode:
+			mAdapter.setShowToDay(false);//如果选中当天会影响集合的数据
 			if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
 				CHOOSE_MODE = CHOICE_MODE_MULTIPLE;//当前是单选就变多选
 				mOkBt.setVisibility(View.VISIBLE);
@@ -294,7 +296,6 @@ public class CalendarActivity extends Activity implements View.OnClickListener,A
 				mOkBt.setVisibility(View.GONE);
 				mCancelBt.setVisibility(View.GONE);
 				unCheckAllItem();//变单选时默认选中当前日期
-				mAdapter.setShowToDay(false);//如果选中当天会影响集合的数据
 //				mAdapter.notifyDataSetChanged();//变单选时默认选中当前日期
 			}
 			gridView.setChoiceMode(CHOOSE_MODE);

@@ -2,6 +2,8 @@ package com.jackdeng.supercalendar;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -164,13 +166,12 @@ public class CalendarAdapter extends BaseAdapter {
 		if (position < (daysOfMonth + dayOfWeek) && position >= dayOfWeek) {
 			// 当前月信息显示
 			textView.setTextColor(context.getResources().getColorStateList(R.color.selector_daytextcolor_black));// 当月字体设黑
-//			drawable = new ColorDrawable(Color.rgb(23, 126, 214));
-			if (position % 7 == 0 || position % 7 == 6) {//周末特殊标记
-
-			}
+//			if (position % 7 == 0 || position % 7 == 6) {//周末特殊标记
+//			}
 		}else {
 			textView.setClickable(false);
-			textView.setTextColor(context.getResources().getColorStateList(R.color.selector_daytextcolor_dark));//上一个月数据和下个月数据
+			textView.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+			textView.setTextColor(context.getResources().getColor(R.color.black_80));//上一个月数据和下个月数据
 			textView.setVisibility(isShowOthersMonthDays?View.VISIBLE:View.INVISIBLE);
 		}
 
