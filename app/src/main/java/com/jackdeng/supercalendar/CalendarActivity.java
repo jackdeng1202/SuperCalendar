@@ -126,13 +126,13 @@ public class CalendarActivity extends Activity implements View.OnClickListener,A
 	}
 
 	@Override
-	public void onAnimationStart(Animation animation) {}
+	public void onAnimationStart(Animation animation) {
+		checkLastItemS();}
 	@Override
 	public void onAnimationRepeat(Animation animation) {}
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		checkLastItemS();
 	}
 
 	private class MyGestureListener extends SimpleOnGestureListener {
@@ -294,7 +294,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener,A
 				mOkBt.setVisibility(View.GONE);
 				mCancelBt.setVisibility(View.GONE);
 				unCheckAllItem();//变单选时默认选中当前日期
-//				mAdapter.setShowToDay(true);//如果选中当天会影响集合的数据
+				mAdapter.setShowToDay(false);//如果选中当天会影响集合的数据
 //				mAdapter.notifyDataSetChanged();//变单选时默认选中当前日期
 			}
 			gridView.setChoiceMode(CHOOSE_MODE);
@@ -308,7 +308,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener,A
 		case R.id.setSpecilDay:
 			unCheckAllItem();
             specialDay = new String[]{"20170912,111", "20170915,222"};
-//            mAdapter.setShowToDay(CHOOSE_MODE == CHOICE_MODE_SINGLE);//如果选中当天会影响集合的数据
+            mAdapter.setShowToDay(false);//如果选中当天会影响集合的数据
             mAdapter.setSpecialDay(specialDay);
 			break;
 		case R.id.getdate:
