@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.AdapterView;
@@ -40,7 +41,7 @@ import static android.widget.AbsListView.CHOICE_MODE_SINGLE;
  * @Email 1032938431@qq.com
  * 
  */
-public class CalendarActivity extends Activity implements View.OnClickListener {
+public class CalendarActivity extends Activity implements View.OnClickListener,Animation.AnimationListener {
 
 	private GestureDetector gestureDetector = null;
 	private CalendarAdapter mAdapter = null;
@@ -70,6 +71,12 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 	private TextView mOkBt;
 	private TextView mCancelBt;
     private TextView mSetSpecilDayBt;
+	private String lastSingleDate;
+	private TextView mGetDateBt;
+	private Animation mAnimationRightIn;
+	private Animation mAnimationRightOut;
+	private Animation mAnimationLeftIn;
+	private Animation mAnimationLeftOut;
 
 	public CalendarActivity() {
 
@@ -79,6 +86,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		year_c = Integer.parseInt(currentDate.split("-")[0]);
 		month_c = Integer.parseInt(currentDate.split("-")[1]);
 		day_c = Integer.parseInt(currentDate.split("-")[2]);
+		lastSingleDate = currentDate;
 
 	}
 
@@ -94,6 +102,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		mOkBt = (TextView) findViewById(R.id.tv_okbt);
 		mCancelBt = (TextView) findViewById(R.id.tv_cancelbt);
 		mSetSpecilDayBt = (TextView) findViewById(R.id.setSpecilDay);
+		mGetDateBt = (TextView) findViewById(R.id.getdate);
 		setListener();
 
 		isShowPreNextMonthDays = false;
@@ -109,20 +118,32 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		flipper.addView(gridView, 0);
 		addTextToTopTextView(currentMonth);
 
-/*		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				for (int i = 0; i < mAdapter.getCount(); i++) {
-					ViewGroup child = (ViewGroup) gridView.getChildAt(i);
-					CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
-					String date = textView.getText().toString();
-					if (date.equals("9")){
-						textView.setChecked(true);
-						return;
-					}
-				}
-			}
-		},100);*/
+		mAnimationRightIn = AnimationUtils.loadAnimation(this, R.anim.push_right_in);
+		mAnimationRightOut = AnimationUtils.loadAnimation(this, R.anim.push_right_out);
+		mAnimationLeftIn = AnimationUtils.loadAnimation(this, R.anim.push_left_in);
+		mAnimationLeftOut = AnimationUtils.loadAnimation(this, R.anim.push_left_out);
+		mAnimationLeftOut.setAnimationListener(this);
+		mAnimationRightOut.setAnimationListener(this);
+	}
+
+	@Override
+	public void onAnimationStart(Animation animation) {
+		/*if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
+			mAdapter.setShowToDay(true);
+		} else {
+			mAdapter.setShowToDay(false);
+		}*/
+	}
+	@Override
+	public void onAnimationRepeat(Animation animation) {}
+
+	@Override
+	public void onAnimationEnd(Animation animation) {
+		if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
+			checkLastItem();
+		} else {
+			checkLastItemS();
+		}
 	}
 
 	private class MyGestureListener extends SimpleOnGestureListener {
@@ -152,12 +173,13 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		jumpMonth++; // 下一个月
 
 		mAdapter = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar, specialDay,jumpMonth, jumpYear, year_c, month_c, day_c);
+		mAdapter.setShowToDay(false);
 		gridView.setAdapter(mAdapter);
 		addTextToTopTextView(currentMonth); // 移动到下一月后，将当月显示在头标题中
 		gvFlag++;
 		flipper.addView(gridView, gvFlag);
-		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
-		flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
+		flipper.setInAnimation(mAnimationLeftIn);
+		flipper.setOutAnimation(mAnimationLeftOut);
 		flipper.showNext();
 		flipper.removeViewAt(0);
 	}
@@ -172,13 +194,14 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		jumpMonth--; // 上一个月
 
 		mAdapter = new CalendarAdapter(this, this.getResources(),isShowPreNextMonthDays,isShowLunar,specialDay, jumpMonth, jumpYear, year_c, month_c, day_c);
+		mAdapter.setShowToDay(false);
 		gridView.setAdapter(mAdapter);
 		gvFlag++;
 		addTextToTopTextView(currentMonth); // 移动到上一月后，将当月显示在头标题中
 		flipper.addView(gridView, gvFlag);
 
-		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_in));
-		flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_out));
+		flipper.setInAnimation(mAnimationRightIn);
+		flipper.setOutAnimation(mAnimationRightOut);
 		flipper.showPrevious();
 		flipper.removeViewAt(0);
 	}
@@ -240,8 +263,8 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 
 					if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
 						unCheckAllItem();
-
-						Toast.makeText(CalendarActivity.this, scheduleYear + "-" + scheduleMonth + "-" + scheduleDay, Toast.LENGTH_SHORT).show();
+						lastSingleDate = scheduleYear + "-" + scheduleMonth + "-" + scheduleDay;
+						Toast.makeText(CalendarActivity.this, lastSingleDate, Toast.LENGTH_SHORT).show();
 					}else {
 						mutiChooseDatas.add(scheduleYear + "-" + scheduleMonth + "-" + scheduleDay);
 					}
@@ -261,6 +284,7 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
 		mOkBt.setOnClickListener(this);
 		mCancelBt.setOnClickListener(this);
         mSetSpecilDayBt.setOnClickListener(this);
+		mGetDateBt.setOnClickListener(this);
 	}
 
 	@Override
@@ -313,6 +337,21 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
             mAdapter.setShowToDay(CHOOSE_MODE == CHOICE_MODE_SINGLE);
             mAdapter.setSpecialDay(specialDay);
 			break;
+		case R.id.getdate:
+			if (CHOOSE_MODE == CHOICE_MODE_SINGLE){
+				if (!TextUtils.isEmpty(lastSingleDate))
+					Toast.makeText(CalendarActivity.this, lastSingleDate, Toast.LENGTH_SHORT).show();
+			} else {
+				String temp1="";
+				for (String str : mutiChooseDatas) {
+					temp1 = temp1 + str + "\n";
+				}
+				if (!TextUtils.isEmpty(temp1))
+					Toast.makeText(CalendarActivity.this, temp1.subSequence(0,temp1.lastIndexOf("\n")), Toast.LENGTH_SHORT).show();
+				else
+					Toast.makeText(CalendarActivity.this, "请选择日期", Toast.LENGTH_SHORT).show();
+			}
+			break;
 		default:
 			break;
 		}
@@ -325,6 +364,37 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
             CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
             textView.setChecked(false);
         }
+	}
+
+	private void checkLastItem() {
+		String year = mAdapter.getShowYear();
+		String month = mAdapter.getShowMonth();
+		for (int i = 0; i < mAdapter.getCount(); i++) {
+			ViewGroup child = (ViewGroup) gridView.getChildAt(i);
+			CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
+			String day = textView.getText().toString();
+			String temp = year + "-"+ month + "-" +day;
+			if (!TextUtils.isEmpty(lastSingleDate) && lastSingleDate.equals(temp.subSequence(0,temp.lastIndexOf("\n"))))
+				 textView.setChecked(true);
+			else
+				 textView.setChecked(false);
+		}
+	}
+
+	private void checkLastItemS() {
+		String year = mAdapter.getShowYear();
+		String month = mAdapter.getShowMonth();
+		for (int i = 0; i < mAdapter.getCount(); i++) {
+			ViewGroup child = (ViewGroup) gridView.getChildAt(i);
+			CheckedTextView textView = (CheckedTextView) child.getChildAt(0);
+			String day = textView.getText().toString();
+			String temp = year + "-"+ month + "-" +day;
+			if (mutiChooseDatas.contains(temp.subSequence(0,temp.lastIndexOf("\n"))))
+				textView.setChecked(true);
+			else
+				textView.setChecked(false);
+
+		}
 	}
 
 }
